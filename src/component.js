@@ -6,7 +6,7 @@ import { decodeMessage, encodeMessage, getInjectedCode } from './utils';
 export default class extends PureComponent {
 
   static defaultProps = {
-    color: 'red',
+    color: '#fff',
     onCall() {},
     source: 0,
     statusbar: false,
