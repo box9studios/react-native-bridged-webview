@@ -1,5 +1,5 @@
 # React Native Bridged Webview
-Provides a component ```<BridgedWebView />``` to faciliate communication between javscript within a webpage and the external react-native logic. The nested webpage will also receive the benefit of no-delay clicks and default mobile-friendly styling.
+Provides a component ```<BridgedWebView />``` to faciliate communication between javscript within a webpage and the external react-native logic. The nested webpage will also receive the benefit of zero-delay clicks, default mobile-friendly styling, and more.
 
 ## Installation
 ```npm i --save react-native-bridged-webview```
@@ -18,8 +18,8 @@ const onBridgedWebViewCall = (type, payload) => {
     return 'Joe';
   }
   if (type === 'makemewait') {
-    const { delay } = payload;
-    return new Promise(resolve => setTimeout(() => resolve('done!'), delay));
+    return new Promise(resolve =>
+      setTimeout(() => resolve('done!'), payload));
   }
 };
 
