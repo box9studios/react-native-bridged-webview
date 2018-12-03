@@ -20,9 +20,17 @@ export default class extends PureComponent {
 
   onMessage = async (event) => {
     const { id, payload, type } = decodeMessage(event);
-    const result = await this.props.onCall(type, payload);
-    this.webview.postMessage(encodeMessage(id, result));
-  }
+    if (type === '__log__') {
+      console.log(...payload);
+    } else {
+      try {
+        const result = await this.props.onCall(type, payload);
+        this.webview.postMessage(encodeMessage(id, result));
+      } catch (error) {
+        this.webview.postMessage(encodeMessage(id, null, error));
+      }
+    }
+  };
 
   onRef = ref => {
     this.webview = ref;
@@ -32,7 +40,25 @@ export default class extends PureComponent {
     if (!this.props.statusbar) {
       return <StatusBar hidden />;
     }
-    return <StatusBar />;
+    const barStyle = (() => {
+      if (this.props.statusbar === 'light') {
+        return 'light-content';
+      }
+      if (this.props.statusbar === 'dark') {
+        return 'dark-content';
+      }
+      return 'default';
+    })();
+    return (
+      <StatusBar
+        animated
+        barStyle={barStyle}
+        style={{
+          backgroundColor: 'transparent',
+        }}
+        translucent
+      />
+    );
   };
 
   render() {

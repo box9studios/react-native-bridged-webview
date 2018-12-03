@@ -11,7 +11,7 @@ export default () => {
   };
 
   const triggerClick = target => {
-    window.removeEventListener('click', onSuppressClick);
+    window.removeEventListener('click', onSuppressClick, true);
     if (
       target.form
       && target.getAttribute('type') === 'submit'
@@ -21,7 +21,7 @@ export default () => {
     } else {
       dispatchEvent(target, 'click');
     }
-    window.addEventListener('click', onSuppressClick);
+    window.addEventListener('click', onSuppressClick, true);
   };
 
   document.body.addEventListener('touchstart', touchStartEvent => {

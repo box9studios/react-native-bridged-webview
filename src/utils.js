@@ -2,13 +2,14 @@ export const decodeMessage = event => {
   try {
     return JSON.parse(event.nativeEvent.data);
   } catch (error) {
-    return {};
+    return { type: '' };
   }
 };
 
-export const encodeMessage = (id, data) => {
+export const encodeMessage = (id, data, error) => {
   try {
-    return JSON.stringify({ id, data });
+    const message = error && error.message ? error.message : 'unknown error';
+    return JSON.stringify({ id, data, error: message });
   } catch (error) {}
 };
 
