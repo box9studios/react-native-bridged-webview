@@ -22,6 +22,8 @@ export default class extends PureComponent {
     const { id, payload, type } = decodeMessage(event);
     if (type === '__log__') {
       console.log(...payload);
+    } else if (type === '__exitFullscreen__') {
+      StatusBar.setHidden(!this.props.statusbar);
     } else {
       try {
         const result = await this.props.onCall(type, payload);
