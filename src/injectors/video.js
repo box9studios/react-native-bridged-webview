@@ -6,9 +6,10 @@ export default () => {
         return;
       }
       video.__BWK__ = true;
-      video.addEventListener('webkitendfullscreen', () => {
-        device('__exitFullscreen__');
-      });
+      video.addEventListener(
+        'webkitendfullscreen',
+        () => device('__exitFullscreen__'),
+      );
     });
   }, 1000);
-}
+};
