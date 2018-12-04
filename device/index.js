@@ -20,7 +20,7 @@ window.addEventListener(
 );
 
 const device = call;
-device.statusbar = 100;
+device.statusbar = 20;
 device.alert = text => call('alert', text);
 device.log = (...args) => call('log', args);
 
