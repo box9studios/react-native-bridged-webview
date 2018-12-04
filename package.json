@@ -1,13 +1,10 @@
 {
   "author": "Box 9 Studios <email@box9studios.com>",
-  "description": "Bridged WebView component for React Native.",
+  "description": "The parts you need to create a react-native/webview hybrid mobile app.",
   "engines": {
     "node": "^10.6.0",
     "npm": "^6.1.0"
   },
-  "files": [
-    "src"
-  ],
   "keywords": [
     "android",
     "bridge",
@@ -15,12 +12,11 @@
     "react",
     "react-native",
     "react-native-webview",
+    "react-native-webview-bridge",
     "webview",
-    "webview-bridge",
-    "webview"
+    "webview-bridge"
   ],
   "license": "MIT",
-  "main": "src/index.js",
   "name": "react-native-bridged-webview",
   "peerDependencies": {
     "react": "*",
@@ -30,5 +26,5 @@
     "type": "git",
     "url": "https://github.com/box9studios/react-native-bridged-webview"
   },
-  "version": "1.2.0"
+  "version": "1.3.0"
 }

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Keyboard, StatusBar, View, WebView } from 'react-native';
+import { Alert, Keyboard, StatusBar, View, WebView } from 'react-native';
 import injectors from './injectors';
 import { decodeMessage, encodeMessage, getInjectedCode } from './utils';
 
@@ -37,6 +37,8 @@ export default class extends PureComponent {
     const { id, payload, type } = decodeMessage(event);
     if (type === '__log__') {
       console.log(...payload);
+    } else if (type === '__alert__') {
+      Alert.alert(`${payload}`);
     } else if (type === '__exitFullscreen__') {
       StatusBar.setHidden(!this.props.statusbar);
     } else {
