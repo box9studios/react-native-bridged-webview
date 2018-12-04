@@ -20,15 +20,18 @@ export default () => {
     },
   );
 
-  window.device = (type, payload) => new Promise((resolve, reject) => {
-    const id = Math.random();
-    listeners[id] = { reject, resolve };
-    window.postMessage(JSON.stringify({
-      id,
-      payload,
-      type,
-    }));
-  });
+  window.__REACT_NATIVE_BRIDGED_WEBVIEW__ = (type, payload) =>
+    new Promise((resolve, reject) => {
+      const id = Math.random();
+      listeners[id] = { reject, resolve };
+      window.postMessage(JSON.stringify({
+        id,
+        payload,
+        type,
+      }));
+    });
 
-  window.device.log = (...args) => device('__log__', args);
+  const event = document.createEvent('Events');
+  event.initEvent('bridgedwebview', true, false);
+  window.dispatchEvent(event);
 };
