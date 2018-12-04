@@ -20,7 +20,7 @@
     "webview"
   ],
   "license": "MIT",
-  "main": "src/react-native-bridged-webview.js",
+  "main": "src/index.js",
   "name": "react-native-bridged-webview",
   "peerDependencies": {
     "react": "*",
