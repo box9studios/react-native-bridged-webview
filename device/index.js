@@ -3,15 +3,13 @@ let queue = [];
 const call = (type, payload) => {
   const bridge = window.__REACT_NATIVE_BRIDGED_WEBVIEW__;
   if (!bridge) {
-    document.body.innerHTML = 'tried to call, but stored...';
     queue.push(() => call(type, payload));
   } else {
-    document.body.innerHTML = 'CALLED IT';
     bridge(`__${type}__`, payload);
   }
 };
 
-if (window) {
+if (window && window.addEventListener) {
   window.addEventListener(
     'bridgedwebview',
     () => {
