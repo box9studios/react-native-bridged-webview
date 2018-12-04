@@ -8,7 +8,7 @@ export default () => {
       video.__BWK__ = true;
       video.addEventListener(
         'webkitendfullscreen',
-        () => device('__exitFullscreen__'),
+        () => window.__REACT_NATIVE_BRIDGED_WEBVIEW__('__exitFullscreen__'),
       );
     });
   }, 1000);
