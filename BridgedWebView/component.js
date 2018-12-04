@@ -35,12 +35,12 @@ export default class extends PureComponent {
 
   onMessage = async (event) => {
     const { id, payload, type } = decodeMessage(event);
-    if (type === '__log__') {
-      console.log(...payload);
-    } else if (type === '__alert__') {
-      Alert.alert(`${payload}`);
+    if (type === '__alert__') {
+      Alert.alert(`${JSON.stringify(payload)}`);
     } else if (type === '__exitFullscreen__') {
       StatusBar.setHidden(!this.props.statusbar);
+    } else if (type === '__log__') {
+      console.log(...payload);
     } else {
       try {
         const result = await this.props.onCall(type, payload);
