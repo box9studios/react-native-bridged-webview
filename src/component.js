@@ -96,6 +96,7 @@ export default class extends PureComponent {
         {this.renderStatusBar()}
           <WebView
             allowsInlineMediaPlayback={true}
+            allowUniversalAccessFromFileURLs={true}
             bounces={false}
             dataDetectorTypes="none"
             injectedJavaScript={getInjectedCode(injectors)}
