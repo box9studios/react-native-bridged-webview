@@ -17,6 +17,8 @@ export default class extends PureComponent {
     ready: false,
   };
 
+  keyboardWillHideListener = null;
+
   componentDidMount() {
     this.keyboardWillHideListener = Keyboard.addListener(
       'keyboardWillHide',
@@ -26,6 +28,7 @@ export default class extends PureComponent {
 
   componentWillUnmount() {
     Keyboard.removeListener('keyboardWillHide', this.keyboardWillHideListener);
+    this.keyboardWillHideListener = null;
   }
 
   onLoad = () => this.setState({ ready: true });
