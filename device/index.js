@@ -11,13 +11,15 @@ const call = (type, payload) => {
   }
 };
 
-window.addEventListener(
-  'bridgedwebview',
-  () => {
-    queue.forEach(fn => fn());
-    queue = [];
-  },
-);
+if (window) {
+  window.addEventListener(
+    'bridgedwebview',
+    () => {
+      queue.forEach(fn => setTimeout(fn));
+      queue = [];
+    },
+  );
+}
 
 const device = call;
 device.statusbar = 20;
