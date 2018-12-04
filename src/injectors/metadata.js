@@ -4,6 +4,6 @@ export default () => {
   document.head.appendChild(meta1);
   const meta2 = document.createElement('meta');
   meta2.setAttribute('name', 'viewport');
-  meta2.setAttribute('content', 'width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0');
+  meta2.setAttribute('content', 'width=device-width, user-scalable=no');
   document.head.appendChild(meta2);
 };

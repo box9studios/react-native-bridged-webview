@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StatusBar, View, WebView } from 'react-native';
+import { Keyboard, StatusBar, View, WebView } from 'react-native';
 import injectors from './injectors';
 import { decodeMessage, encodeMessage, getInjectedCode } from './utils';
 
@@ -13,8 +13,20 @@ export default class extends PureComponent {
   };
 
   state = {
+    toggler: 0,
     ready: false,
   };
+
+  componentDidMount() {
+    this.keyboardWillHideListener = Keyboard.addListener(
+      'keyboardWillHide',
+      () => this.setState({ toggler: this.state.toggler === 0 ? 1 : 0 }),
+    );
+  }
+
+  componentWillUnmount() {
+    Keyboard.removeListener('keyboardWillHide', this.keyboardWillHideListener);
+  }
 
   onLoad = () => this.setState({ ready: true });
 
@@ -64,32 +76,40 @@ export default class extends PureComponent {
   };
 
   render() {
+    // fixes a bug where the view does not reset to the original position
+    // when the keyboard is dismissed
+    if (this.state.toggler) {
+      setTimeout(() => this.setState({ 'toggler' : 0 }), 1);
+    }
     return (
       <View
         style={{
           backgroundColor: this.props.color,
           height: '100%',
           width: '100%',
+          marginTop: this.state.toggler,
         }}
       >
         {this.renderStatusBar()}
-        <WebView
-          allowsInlineMediaPlayback={true}
-          bounces={false}
-          dataDetectorTypes="none"
-          injectedJavaScript={getInjectedCode(injectors)}
-          mediaPlaybackRequiresUserAction={false}
-          onMessage={this.onMessage}
-          onLoad={this.onLoad}
-          ref={this.onRef}
-          source={this.props.source}
-          style={{
-            backgroundColor: 'transparent',
-            height: '100%',
-            opacity: this.state.ready ? 1 : 0,
-            width: '100%',
-          }}
-        />
+          <WebView
+            allowsInlineMediaPlayback={true}
+            bounces={false}
+            dataDetectorTypes="none"
+            injectedJavaScript={getInjectedCode(injectors)}
+            mediaPlaybackRequiresUserAction={false}
+            onMessage={this.onMessage}
+            onLoad={this.onLoad}
+            originWhitelist={['*']}
+            ref={this.onRef}
+            source={this.props.source}
+            style={{
+              backgroundColor: 'transparent',
+              height: '100%',
+              opacity: this.state.ready ? 1 : 0,
+              width: '100%',
+            }}
+            useWebKit={true}
+          />
       </View>
     );
   }
