@@ -1,16 +1,13 @@
 {
   "author": "Box 9 Studios <email@box9studios.com>",
-  "description": "The parts you need to create a react-native/webview hybrid mobile app.",
+  "description": "Parts for a react-native/webview hybrid mobile app.",
   "engines": {
     "node": "^10.6.0",
     "npm": "^6.1.0"
   },
   "files:": [
-    "./BridgedWebView",
-    "./alert",
-    "./call",
-    "./platform",
-    "./statusbar"
+    "./bridge",
+    "./BridgedWebView"
   ],
   "keywords": [
     "android",
@@ -34,5 +31,5 @@
     "type": "git",
     "url": "https://github.com/box9studios/react-native-bridged-webview"
   },
-  "version": "1.5.2"
+  "version": "1.6.0"
 }
