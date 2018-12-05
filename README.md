@@ -1,5 +1,9 @@
 # React Native Bridged Webview
+
 The parts you need to create a react-native/webview hybrid mobile app.
+
+```npm install react-native-bridged-webview```
+
 
 ## Description
 Every hybrid mobile app contains three essential parts:
@@ -36,11 +40,11 @@ export default () => (
 ```
 ```js
 // js somewhere within the index.html file
-import call from 'react-native-bridged-webview/call';
+import bridge from 'react-native-bridged-webview/bridge';
 
 (async () => {
-  const name = await call('whoami');
-  await call('makemewait', 3000);
+  const name = await bridge('whoami');
+  await bridge('makemewait', 3000);
   document.body.innerText = `Finally! My name is ${name}`;
 })();
 ```
