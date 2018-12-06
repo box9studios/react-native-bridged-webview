@@ -84,7 +84,7 @@ export default class extends PureComponent {
     // fixes a bug where the view does not reset to the original position
     // when the keyboard is dismissed
     if (this.state.toggler) {
-      setTimeout(() => this.setState({ 'toggler' : 0 }), 1);
+      setTimeout(() => this.setState({ 'toggler' : 0 }), 10);
     }
     return (
       <View
