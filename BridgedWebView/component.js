@@ -92,7 +92,6 @@ export default class extends PureComponent {
           backgroundColor: this.props.color,
           height: '100%',
           width: '100%',
-          marginTop: this.state.toggler,
         }}
       >
         {this.renderStatusBar()}
@@ -110,6 +109,7 @@ export default class extends PureComponent {
             style={{
               backgroundColor: 'transparent',
               height: '100%',
+              marginTop: this.state.toggler,
               opacity: this.state.ready ? 1 : 0,
               width: '100%',
             }}
