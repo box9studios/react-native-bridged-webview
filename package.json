@@ -1,5 +1,5 @@
 {
-  "author": "Box 9 Studios <email@box9studios.com>",
+  "author": "Steve Binder <email@stevebinder.com>",
   "description": "Parts for a react-native/webview hybrid mobile app.",
   "engines": {
     "node": "^10.6.0",
@@ -31,5 +31,5 @@
     "type": "git",
     "url": "https://github.com/box9studios/react-native-bridged-webview"
   },
-  "version": "1.7.2"
+  "version": "1.7.3"
 }
